@@ -11,18 +11,28 @@ const searchPhone = () => {
 const putResult = phones => {
     const resultContainer = document.getElementById('result-container');
     resultContainer.textContent = '';
-    let count = 0;
-    for(const phone of phones){
+    if(phones.length>20){
+        showLimit(0,phones,20)
+    }
+    else{
+        showLimit(0,phones,phones.length);
+    }
+}
+let products = [];
+const showLimit = (initialize,phones,limit) => {
+    products= products.concat(phones);
+    const resultContainer = document.getElementById('result-container');
+    for(let i=initialize;i<limit;i++){
         const div = document.createElement('div');
         div.classList.add('col-4');
         div.innerHTML = `
             <div class="product-container rounded-3 p-2 pb-3 h-100">
-                <img src="${phone.image}" class="w-100 rounded-3 d-block img-style" alt="">
+                <img src="${phones[i].image}" class="w-100 rounded-3 d-block img-style" alt="">
                 <div class="product-info text-center">
-                    <p class="mb-1 mt-3">Phone Name: <span>${phone.phone_name}</span></p>
-                    <p class="mt-0">Brand: <span>${phone.brand}</span></p>
+                    <p class="mb-1 mt-3">Phone Name: <span>${phones[i].phone_name}</span></p>
+                    <p class="mt-0">Brand: <span>${phones[i].brand}</span></p>
                     <div class="d-flex justify-content-center">
-                        <button onclick="showDetails('${phone.slug}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button onclick="showDetails('${phones[i].slug}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         details
                         </button>
                         <button class="ms-2 btn btn-danger">Remove</button>
@@ -30,8 +40,16 @@ const putResult = phones => {
                 </div>
             </div>
         `;
+        console.log(limit)
         resultContainer.appendChild(div);
     }
+    if(phones.length>20){
+        document.getElementById('show-more-button').style.display='block';
+    }
+}
+const showFullResult = () =>{
+    showLimit(20,products,products.length);
+    document.getElementById('show-more-button').style.display='none';
 }
 
 //showing details on modal

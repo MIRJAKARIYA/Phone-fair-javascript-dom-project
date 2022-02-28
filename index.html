@@ -15,11 +15,11 @@
 <body>
     <!-- main heading starts here -->
     <h1 class="text-center">Phone Fair</h1>
-    <h2 class="text-center">Get yout dream phone!!!</h2>
+    <h2 class="text-center">Get your dream phone!!!</h2>
     <!-- search area starts here -->
     <section class="container mt-3">
         <div class="search-container">
-            <input type="text" id="search-field">
+            <input type="text" id="search-field" placeholder="search mobile">
             <button id="search-button" class="ms-2" onclick="searchPhone()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </section>
@@ -28,6 +28,7 @@
         <div id="result-container" class="row gy-4">
             
         </div>
+        <button id="show-more-button" class="btn btn-primary" onclick="showFullResult()">show more</button>
     </section>
     <!-- modal to show details -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
