@@ -1,30 +1,37 @@
 // getting search field text
 const searchPhone = () => {
     const searchText = document.getElementById('search-field');
+    if(searchText.value === ''){
+        document.getElementById('error-message').style.display='block';
+        document.getElementById('result-container').textContent='';
+        document.getElementById('show-more-button').style.display='none';
+        return;
+    }
+    document.getElementById('error-message').style.display='none';
     fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText.value}`)
     .then(res => res.json())
     .then(data => putResult(data.data));
     searchText.value = '';
-}
-
+};
 // putting search results into result container
 const putResult = phones => {
     const resultContainer = document.getElementById('result-container');
     resultContainer.textContent = '';
     if(phones.length>20){
-        showLimit(0,phones,20)
+        showLimit(0,phones,20) //showing 20 data if data>20
     }
     else{
-        showLimit(0,phones,phones.length);
+        showLimit(0,phones,phones.length); //showing data <=20
     }
-}
-let products = [];
+};
+let products = []; //to contain the mobile data for show more button
+//function to show result limitwise
 const showLimit = (initialize,phones,limit) => {
     products= products.concat(phones);
     const resultContainer = document.getElementById('result-container');
     for(let i=initialize;i<limit;i++){
         const div = document.createElement('div');
-        div.classList.add('col-4');
+        div.classList.add('col-md-6','col-lg-4');
         div.innerHTML = `
             <div class="product-container rounded-3 p-2 pb-3 h-100">
                 <img src="${phones[i].image}" class="w-100 rounded-3 d-block img-style" alt="">
@@ -46,21 +53,20 @@ const showLimit = (initialize,phones,limit) => {
     if(phones.length>20){
         document.getElementById('show-more-button').style.display='block';
     }
-}
+};
+//showing full data as show more button is clicked
 const showFullResult = () =>{
     showLimit(20,products,products.length);
     document.getElementById('show-more-button').style.display='none';
-}
-
+};
 //showing details on modal
 const showDetails = details => {
     const url = `https://openapi.programming-hero.com/api/phone/${details}`;
     fetch(url)
     .then(res => res.json())
     .then(data => putDetailsIntoModal(data.data));
-}
+};
 const putDetailsIntoModal = mobile => {
-    console.log(mobile)
     const sensors = mobile.mainFeatures.sensors.join(',');
     const modalBody = document.getElementById('modalBody');
     modalBody.innerHTML = 
@@ -92,8 +98,14 @@ const putDetailsIntoModal = mobile => {
         </div>
     </div>
     `;
-}
+};
 //clearing modal body when close buttons are clicked
 const clearModal = () => {
     document.getElementById('modalBody').textContent = '';
-}
+};
+//remove button functionality
+document.getElementById('result-container').addEventListener('click',event => {
+    if(event.target.innerText === 'Remove'){
+        event.target.parentNode.parentNode.parentNode.parentNode.style.display='none';
+    }
+})

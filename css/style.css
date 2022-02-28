@@ -15,6 +15,9 @@ body{
     width: 100%;
     height: 40px;
 }
+#error-message{
+    display: none;
+}
 #search-button{
     width: 50px;
     border: none;
@@ -48,4 +51,6 @@ button{
 /* show more button */
 #show-more-button{
     display: none;
+    width: 200px;
+    margin: 20px auto;
 }
