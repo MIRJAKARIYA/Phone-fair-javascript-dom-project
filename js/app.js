@@ -3,13 +3,15 @@ const searchPhone = () => {
     const searchText = document.getElementById('search-field');
     fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText.value}`)
     .then(res => res.json())
-    .then(data => putResult(data.data))
+    .then(data => putResult(data.data));
     searchText.value = '';
 }
 
 // putting search results into result container
 const putResult = phones => {
     const resultContainer = document.getElementById('result-container');
+    resultContainer.textContent = '';
+    let count = 0;
     for(const phone of phones){
         const div = document.createElement('div');
         div.classList.add('col-4');
@@ -34,5 +36,42 @@ const putResult = phones => {
 
 //showing details on modal
 const showDetails = details => {
-    
+    const url = `https://openapi.programming-hero.com/api/phone/${details}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => putDetailsIntoModal(data.data));
+}
+const putDetailsIntoModal = mobile => {
+    console.log(mobile)
+    const sensors = mobile.mainFeatures.sensors.join(',');
+    const modalBody = document.getElementById('modalBody');
+    modalBody.innerHTML = 
+    `
+    <div class="d-flex justify-content-center">
+        <img src="${mobile.image}">
+    </div>
+    <div class="mt-4">
+        <div class="text-center"><span class="product-details-heading">Product name:</span> ${mobile.name}.</div>
+        <div class="text-center"><span class="product-details-heading">Release date:</span> ${mobile.releaseDate?mobile.releaseDate:'no release date found'}.</div>
+        <div class="mt-4">
+            <h4 class="text-center mb-4 text-primary">Main features:</h4>
+            <div><span class="product-details-heading">Storage:</span> ${mobile.mainFeatures.storage}.</div>
+            <div><span class="product-details-heading">Display size:</span> ${mobile.mainFeatures.displaySize}.</div>
+            <div><span class="product-details-heading">Chipset:</span> ${mobile.mainFeatures.chipSet}.</div>
+            <div><span class="product-details-heading">merory:</span> ${mobile.mainFeatures.memory}.</div>
+            <div><span class="product-details-heading">Sensors:</span> ${sensors}.</div>
+        </div>
+        <div class="mt-4">
+            <h4 class="text-center text-primary mb-4">Other informations:</h4>
+            <div>
+                <div><span class="product-details-heading">WLAN:</span> ${mobile.others.WLAN || 'no information found'}.</div>
+                <div><span class="product-details-heading">Blutooth:</span> ${mobile.others.Bluetooth||'no information found'}.</div>
+                <div><span class="product-details-heading">GPS:</span> ${mobile.others.GPS||'no information found'}.</div>
+                <div><span class="product-details-heading">NFC:</span> ${mobile.others.NFC||'no information found'}.</div>
+                <div><span class="product-details-heading">Radio:</span> ${mobile.others.Radio||'no information found'}.</div>
+                <div><span class="product-details-heading">USB:</span> ${mobile.others.USB||'no information found'}.</div>
+            </div>
+        </div>
+    </div>
+    `;
 }
