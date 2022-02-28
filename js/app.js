@@ -20,7 +20,9 @@ const putResult = phones => {
                     <p class="mb-1 mt-3">Phone Name: <span>${phone.phone_name}</span></p>
                     <p class="mt-0">Brand: <span>${phone.brand}</span></p>
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-success">Details</button>
+                        <button onclick="showDetails('${phone.slug}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        details
+                        </button>
                         <button class="ms-2 btn btn-danger">Remove</button>
                     </div>
                 </div>
@@ -28,4 +30,9 @@ const putResult = phones => {
         `;
         resultContainer.appendChild(div);
     }
+}
+
+//showing details on modal
+const showDetails = details => {
+    
 }
