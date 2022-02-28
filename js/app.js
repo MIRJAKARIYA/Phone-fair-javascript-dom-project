@@ -16,7 +16,7 @@ const putResult = phones => {
         const div = document.createElement('div');
         div.classList.add('col-4');
         div.innerHTML = `
-            <div class="product-container rounded-3 p-2 pb-3">
+            <div class="product-container rounded-3 p-2 pb-3 h-100">
                 <img src="${phone.image}" class="w-100 rounded-3 d-block img-style" alt="">
                 <div class="product-info text-center">
                     <p class="mb-1 mt-3">Phone Name: <span>${phone.phone_name}</span></p>
@@ -64,14 +64,18 @@ const putDetailsIntoModal = mobile => {
         <div class="mt-4">
             <h4 class="text-center text-primary mb-4">Other informations:</h4>
             <div>
-                <div><span class="product-details-heading">WLAN:</span> ${mobile.others.WLAN || 'no information found'}.</div>
-                <div><span class="product-details-heading">Blutooth:</span> ${mobile.others.Bluetooth||'no information found'}.</div>
-                <div><span class="product-details-heading">GPS:</span> ${mobile.others.GPS||'no information found'}.</div>
-                <div><span class="product-details-heading">NFC:</span> ${mobile.others.NFC||'no information found'}.</div>
-                <div><span class="product-details-heading">Radio:</span> ${mobile.others.Radio||'no information found'}.</div>
-                <div><span class="product-details-heading">USB:</span> ${mobile.others.USB||'no information found'}.</div>
+                <div><span class="product-details-heading">WLAN:</span> ${mobile.others?.WLAN||'no information found'}.</div>
+                <div><span class="product-details-heading">Blutooth:</span> ${mobile.others?.Bluetooth||'no information found'}.</div>
+                <div><span class="product-details-heading">GPS:</span> ${mobile.others?.GPS||'no information found'}.</div>
+                <div><span class="product-details-heading">NFC:</span> ${mobile.others?.NFC||'no information found'}.</div>
+                <div><span class="product-details-heading">Radio:</span> ${mobile.others?.Radio||'no information found'}.</div>
+                <div><span class="product-details-heading">USB:</span> ${mobile.others?.USB||'no information found'}.</div>
             </div>
         </div>
     </div>
     `;
+}
+//clearing modal body when close buttons are clicked
+const clearModal = () => {
+    document.getElementById('modalBody').textContent = '';
 }
