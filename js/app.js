@@ -47,7 +47,7 @@ const showLimit = (initialize,phones,limit) => {
             <div class="product-container rounded-3 p-2 pb-3 h-100">
                 <img src="${phones[i].image}" class="w-100 rounded-3 d-block img-style" alt="">
                 <div class="product-info text-center">
-                    <p class="mb-1 mt-3">Phone Name: <span>${phones[i].phone_name}</span></p>
+                    <p class="mb-1 mt-3">Product Name: <span>${phones[i].phone_name}</span></p>
                     <p class="mt-0">Brand: <span>${phones[i].brand}</span></p>
                     <div class="d-flex justify-content-center">
                         <button onclick="showDetails('${phones[i].slug}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -87,11 +87,11 @@ const putDetailsIntoModal = mobile => {
         <div class="text-center"><span class="product-details-heading">Release date:</span> ${mobile.releaseDate?mobile.releaseDate:'no release date found'}.</div>
         <div class="mt-4">
             <h4 class="text-center mb-4 text-primary">Main features:</h4>
-            <div><span class="product-details-heading">Storage:</span> ${mobile.mainFeatures.storage}.</div>
-            <div><span class="product-details-heading">Display size:</span> ${mobile.mainFeatures.displaySize}.</div>
-            <div><span class="product-details-heading">Chipset:</span> ${mobile.mainFeatures.chipSet}.</div>
-            <div><span class="product-details-heading">merory:</span> ${mobile.mainFeatures.memory}.</div>
-            <div><span class="product-details-heading">Sensors:</span> ${sensors}.</div>
+            <div><p class="product-details-heading mb-0">Storage:</p> ${mobile.mainFeatures.storage}.</div>
+            <div><p class="product-details-heading mb-0">Display size:</p> ${mobile.mainFeatures.displaySize}.</div>
+            <div><p class="product-details-heading mb-0">Chipset:</p> ${mobile.mainFeatures.chipSet}.</div>
+            <div><p class="product-details-heading mb-0">merory:</p> ${mobile.mainFeatures.memory}.</div>
+            <div><p class="product-details-heading mb-0">Sensors:</p> ${sensors}.</div>
         </div>
         <div class="mt-4">
             <h4 class="text-center text-primary mb-4">Other informations:</h4>

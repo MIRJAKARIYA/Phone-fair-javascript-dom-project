@@ -27,7 +27,7 @@ body{
 }
 /* result area style */
 #result-container{
-    width: 87%;
+    width: 90%;
     margin: 0px auto;
 }
 /* product container style */
@@ -50,6 +50,9 @@ button{
     color: rgb(93, 8, 173);
     font-weight: 700;
     font-size: 18px;
+}
+#modalBody{
+    word-break: break-word;
 }
 /* show more button */
 #show-more-button{
