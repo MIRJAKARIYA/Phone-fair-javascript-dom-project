@@ -14,6 +14,8 @@ body{
 #search-field{
     width: 100%;
     height: 40px;
+    padding-left: 10px;
+    font-size: 18px;
 }
 #error-message{
     display: none;
@@ -25,7 +27,8 @@ body{
 }
 /* result area style */
 #result-container{
-    min-height: 200px;
+    width: 85%;
+    margin: 0px auto;
 }
 /* product container style */
 .product-container{

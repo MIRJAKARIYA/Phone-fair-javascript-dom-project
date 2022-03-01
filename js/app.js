@@ -20,9 +20,11 @@ const putResult = phones => {
     resultContainer.textContent = '';
     if(phones.length>20){
         showLimit(0,phones,20) //showing 20 data if data>20
+        document.getElementById('show-more-button').style.display='block';
     }
     else{
         showLimit(0,phones,phones.length); //showing data <=20
+        document.getElementById('show-more-button').style.display='none';
     }
 };
 let products = []; //to contain the mobile data for show more button
@@ -58,9 +60,6 @@ const showLimit = (initialize,phones,limit) => {
         `;
         resultContainer.appendChild(div);
         document.getElementById('spinner').style.display = 'none';
-    }
-    if(phones.length>20){
-        document.getElementById('show-more-button').style.display='block';
     }
 };
 //showing full data as show more button is clicked

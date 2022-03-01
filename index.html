@@ -14,20 +14,20 @@
 </head>
 <body>
     <!-- main heading starts here -->
-    <h1 class="text-center">Phone Fair</h1>
-    <h2 class="text-center">Get your dream phone!!!</h2>
+    <h1 class="text-center mt-3">Phone Fair</h1>
+    <h3 class="text-center mb-4">Get your dream phone!!!</h3>
     <!-- search area starts here -->
     <section class="container mt-3">
         <div class="search-container">
-            <input type="text" id="search-field" placeholder="search mobile">
+            <input type="text" id="search-field" placeholder="search phone &#128241">
             <button id="search-button" class="ms-2" onclick="searchPhone()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <p id="error-message" class="text-center text-danger">please write something to search...</p>
     </section>
     <!-- result area starts here -->
-    <section class="container mt-5">
+    <section class="container my-5">
         <div id="result-container" class="row gy-4">
-            
+            <!-- search results will be shown here -->
         </div>
         <div class="spinner-border text-danger" id="spinner" role="status">
           <span class="visually-hidden">Loading...</span>
