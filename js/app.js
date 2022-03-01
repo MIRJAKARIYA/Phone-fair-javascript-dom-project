@@ -116,4 +116,4 @@ document.getElementById('result-container').addEventListener('click',event => {
     if(event.target.innerText === 'Remove'){
         event.target.parentNode.parentNode.parentNode.parentNode.style.display='none';
     }
-})
+});
