@@ -51,7 +51,7 @@ const showLimit = (initialize,phones,limit) => {
                     <p class="mt-0">Brand: <span>${phones[i].brand}</span></p>
                     <div class="d-flex justify-content-center">
                         <button onclick="showDetails('${phones[i].slug}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        details
+                        Details
                         </button>
                         <button class="ms-2 btn btn-danger">Remove</button>
                     </div>
