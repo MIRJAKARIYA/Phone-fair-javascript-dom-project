@@ -54,3 +54,8 @@ button{
     width: 200px;
     margin: 20px auto;
 }
+/* spinner */
+#spinner{
+    display: none;
+    margin: 0px auto;
+}

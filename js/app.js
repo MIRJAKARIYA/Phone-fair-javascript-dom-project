@@ -7,6 +7,7 @@ const searchPhone = () => {
         document.getElementById('show-more-button').style.display='none';
         return;
     }
+    document.getElementById('spinner').style.display='block'; //spinner gets visible
     document.getElementById('error-message').style.display='none';
     fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText.value}`)
     .then(res => res.json())
@@ -27,6 +28,14 @@ const putResult = phones => {
 let products = []; //to contain the mobile data for show more button
 //function to show result limitwise
 const showLimit = (initialize,phones,limit) => {
+    products=[];//clearing previous values
+    if(phones.length == 0 || phones==null){
+        document.getElementById('spinner').style.display='none';
+        document.getElementById('show-more-button').style.display='none';
+        document.getElementById('result-container').innerHTML = `
+            <h1 class="text-center text-danger">Sorry no result found😕</h1>
+        `;
+    }
     products= products.concat(phones);
     const resultContainer = document.getElementById('result-container');
     for(let i=initialize;i<limit;i++){
@@ -47,8 +56,8 @@ const showLimit = (initialize,phones,limit) => {
                 </div>
             </div>
         `;
-        console.log(limit)
         resultContainer.appendChild(div);
+        document.getElementById('spinner').style.display = 'none';
     }
     if(phones.length>20){
         document.getElementById('show-more-button').style.display='block';
